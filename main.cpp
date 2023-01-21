@@ -1,6 +1,11 @@
 #include <iostream>
 #include "utf8.h"
 
+void ctest(const char* str)
+{
+	std::cout << "C style string: " << str << std::endl;
+}
+
 int main()
 {
 	std::string test = "Göörüşürüz\n";
@@ -19,4 +24,6 @@ int main()
 	test = ucs_to_utf8(wide);
 
 	std::cout << test << std::endl;
+
+	ctest(test.c_str());
 }

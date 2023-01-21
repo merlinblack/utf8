@@ -55,7 +55,6 @@ UCSvector utf8_to_ucs(const std::string& src)
         ch -= offsetsFromUTF8[nb];
         dest.push_back(ch);
     }
-    dest.push_back(0);
     return dest;
 }
 
@@ -91,7 +90,6 @@ std::string ucs_to_utf8(UCSvector src)
         }
         i++;
     }
-    dest.push_back(0);
     
     // client code may want to do:
     // dest.shrink_to_fit();
