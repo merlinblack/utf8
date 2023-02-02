@@ -3,7 +3,7 @@ Nigels UTF8 functions.
 
 Two functions to aid in editing utf8 strings, by converting to and from UCS-4.
 
-As a vector of 32bit code points you can add and delete characters freely without worrying about how many bytes a particular charater takes.
+As a vector of 32bit code points you can add and delete characters freely without worrying about different 'glyphs' being different numbers of bytes.
 
 C++ built in convertions seem hard to use or even depreciated. 🤨
 

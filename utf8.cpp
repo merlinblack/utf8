@@ -18,6 +18,7 @@ static const UCSchar offsetsFromUTF8[6] = {
     0x03C82080UL, 0xFA082080UL, 0x82082080UL
 };
 
+// nice and fast... perhaps not great for a micrcocontroller
 static const char trailingBytesForUTF8[256] = {
     0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
     0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -46,7 +47,7 @@ UCSvector utf8_to_ucs(const std::string& src)
         ch = 0;
         switch (nb)
 		{
-            /* these fall through deliberately */
+          /* these fall through deliberately */
         	case 3: ch += (unsigned char)*i++; ch <<= 6;
         	case 2: ch += (unsigned char)*i++; ch <<= 6;
         	case 1: ch += (unsigned char)*i++; ch <<= 6;
@@ -61,10 +62,10 @@ UCSvector utf8_to_ucs(const std::string& src)
 std::string ucs_to_utf8(UCSvector src)
 {
     UCSchar ch;
-	std::string dest;
+	  std::string dest;
     auto i = src.begin();
 
-    // Rough guess how log the string will be.
+    // Rough guess how long the string will be.
     dest.reserve(src.size()*2);
 
     while (i != src.end())
