@@ -3,27 +3,27 @@
 
 void ctest(const char* str)
 {
-	std::cout << "C style string: " << str << std::endl;
+  std::cout << "C style string: " << str << std::endl;
 }
 
 int main()
 {
-	std::string test = "Göörüşürüz\n";
+  std::string test = "Göörüşürüz\n";
 
-	auto wide = utf8_to_ucs(test);
+  auto wide = utf8_to_ucs(test);
 
-	for( const auto& codepoint : wide )
-		std::cout << codepoint << std::endl;
+  for (const auto& codepoint : wide)
+    std::cout << codepoint << std::endl;
 
-	auto cursor = wide.begin();
-	
-	cursor++;
+  auto cursor = wide.begin();
 
-	cursor = wide.erase(cursor);
+  cursor++;
 
-	test = ucs_to_utf8(wide);
+  cursor = wide.erase(cursor);
 
-	std::cout << test << std::endl;
+  test = ucs_to_utf8(wide);
 
-	ctest(test.c_str());
+  std::cout << test << std::endl;
+
+  ctest(test.c_str());
 }
